@@ -7,15 +7,15 @@ class FlutterExifRotation {
   static const MethodChannel _channel =
       const MethodChannel('flutter_exif_rotation');
 
-  static Future<String?> get platformVersion async {
-    final String? version = await _channel.invokeMethod('getPlatformVersion');
+  static Future<String> get platformVersion async {
+    final String version = await _channel.invokeMethod('getPlatformVersion');
     return version;
   }
 
   /// Get the [path] of the image and fix the orientation.
   /// Return the [File] with the exif data fixed
   static Future<File> rotateImage({
-    required String path,
+    @required String path,
   }) async =>
       await _rotateImageInternal(
         path: path,
@@ -26,7 +26,7 @@ class FlutterExifRotation {
   /// saves the file in the device.
   /// Return the [File] with the exif data fixed
   static Future<File> rotateAndSaveImage({
-    required String path,
+    @required String path,
   }) async =>
       await _rotateImageInternal(
         path: path,
@@ -34,8 +34,8 @@ class FlutterExifRotation {
       );
 
   static Future<File> _rotateImageInternal({
-    required String path,
-    required bool save,
+    @required String path,
+    @required bool save,
   }) async {
     String filePath = await (_channel.invokeMethod(
       'rotateImage',
