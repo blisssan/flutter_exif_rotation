@@ -15,30 +15,34 @@ class MyApp extends StatefulWidget {
 
 /// The class with the scaffold
 class _MyAppState extends State<MyApp> {
-  File? _image;
+  File _image;
   final picker = ImagePicker();
 
   Future getImage() async {
     final image = await picker.getImage(source: ImageSource.gallery);
-    if (image != null) {
+    if (image != null && image.path != null) {
       File rotatedImage =
           await FlutterExifRotation.rotateImage(path: image.path);
 
-      setState(() {
-        _image = rotatedImage;
-      });
+      if (image != null) {
+        setState(() {
+          _image = rotatedImage;
+        });
+      }
     }
   }
 
   Future getImageAndSave() async {
     final image = await picker.getImage(source: ImageSource.gallery);
-    if (image != null) {
+    if (image != null && image.path != null) {
       File rotatedImage =
           await FlutterExifRotation.rotateAndSaveImage(path: image.path);
 
-      setState(() {
-        _image = rotatedImage;
-      });
+      if (image != null) {
+        setState(() {
+          _image = rotatedImage;
+        });
+      }
     }
   }
 
@@ -57,7 +61,7 @@ class _MyAppState extends State<MyApp> {
         body: new Center(
           child: _image == null
               ? new Text('No image selected.')
-              : new Image.file(_image!),
+              : new Image.file(_image),
         ),
         persistentFooterButtons: <Widget>[
           new FloatingActionButton(

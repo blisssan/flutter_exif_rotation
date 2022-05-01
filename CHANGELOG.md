@@ -1,28 +1,3 @@
-## 0.5.1
-* Fixing OutOfMemory exception when rotating multiple images by @mZadorskii
-
-## 0.5.0
-
-* Migration to Kotlin implemented by @paricleu
-* SDK min version to 2.14.0
-
-## 0.4.3
-
-* Fixed permissions to make it work when tested for the first time
-
-## 0.4.2
-
-* Added use without permissions by @antondudakov
-
-## 0.4.1
-
-* Buxfix #38
-
-## 0.4.0
-
-* Upgraded image_picker to 0.7.2 and dart to 2.12 by @dvaldivia
-* Using null safety
-
 ## 0.3.2
 
 * iOS podspec deployment target set to 8.0
