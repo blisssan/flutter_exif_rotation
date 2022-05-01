@@ -1,11 +1,11 @@
 import 'dart:async';
 import 'dart:io';
-
+import 'package:meta/meta.dart';
 import 'package:flutter/services.dart';
 
 class FlutterExifRotation {
   static const MethodChannel _channel =
-      const MethodChannel('flutter_exif_rotation');
+  const MethodChannel('flutter_exif_rotation');
 
   static Future<String> get platformVersion async {
     final String version = await _channel.invokeMethod('getPlatformVersion');
